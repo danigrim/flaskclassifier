@@ -8,6 +8,10 @@ filename = '/rfc_model.pkl'
 app = Flask(__name__)
 model = pickle.load(open(filename,'rb'))
 
+@app.route("/")
+def home_view():
+        return "<h1>Welcome to my Web-Application for Heart Disease Forecasting</h1>"
+
 
 @app.route('/predict_single', methods=['GET'])
 def predict_single():
