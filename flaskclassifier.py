@@ -30,6 +30,7 @@ def predict_many():
     try:
         content = request.json
         df = pd.json_normalize(content)
+        df = pd.DataFrame(df)
         prediction = model.predict(df)
     except:
          return jsonify({'error':"JSON wrong format" })
