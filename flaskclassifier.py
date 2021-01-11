@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import pickle
 import pandas as pd
 import json
+import os
 
 filename = '/rfc_model.pkl'
 app = Flask(__name__)
@@ -30,4 +31,9 @@ def predict_many():
 
 
 if __name__ == "main":
-    app.run()
+    port = os.environ.get('PORT')
+
+    if port:
+        app.run(host='0.0.0.0', port=int(port))
+    else:
+        app.run()
