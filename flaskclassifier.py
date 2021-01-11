@@ -1,3 +1,5 @@
+import sys
+
 from flask import Flask, request, jsonify
 import pickle
 import pandas as pd
@@ -27,7 +29,7 @@ def predict_single():
 def predict_many():
     try:
         content = request.json
-        df = pd.DataFrame(content)
+        df = pd.DataFrame(pd.read_json(content, orient='records'))
         prediction = model.predict(df)
     except:
         return jsonify({'error':"JSON wrong format" })
