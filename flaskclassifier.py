@@ -29,7 +29,7 @@ def predict_single():
 def predict_many():
     try:
         content = request.json
-        df = pd.read_json(content)
+        df = pd.json_normalize(content)
         df = pd.DataFrame(df)
         prediction = model.predict(df)
     except:
