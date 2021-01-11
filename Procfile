@@ -1,1 +1,1 @@
-web: guinicorn model_predict_app:app
+web: guinicorn flaskclassifier:app
