@@ -27,12 +27,12 @@ def predict_single():
 
 @app.route('/predict_many', methods=['POST'])
 def predict_many():
-    try:
-        content = request.json
-        df = pd.DataFrame(content)
-        prediction = model.predict(df)
-    except:
-        return jsonify({'error':"JSON wrong format" })
+    # try:
+    content = request.json
+    df = pd.DataFrame(content)
+    prediction = model.predict(df)
+    # except:
+    #     return jsonify({'error':"JSON wrong format" })
     return jsonify({'prediction': list(prediction)})
 
 
