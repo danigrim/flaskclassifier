@@ -4,7 +4,7 @@ import pandas as pd
 import json
 import os
 
-filename = '/rfc_model.pkl'
+filename = 'rfc_model.pkl'
 app = Flask(__name__)
 model = pickle.load(open(filename,'rb'))
 
