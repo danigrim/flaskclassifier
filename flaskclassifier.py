@@ -10,7 +10,7 @@ model = pickle.load(open(filename,'rb'))
 
 @app.route("/")
 def home_view():
-        return "<h1>Welcome to my Web-Application for Heart Disease Forecasting</h1>"
+    return "<h1>Welcome to my Web-Application for Heart Disease Forecasting</h1>"
 
 
 @app.route('/predict_single', methods=['GET'])
