@@ -6,7 +6,7 @@ import pandas as pd
 import json
 import os
 
-filename = 'rfc_model.pkl'
+filename = 'rfc_model3.pkl'
 app = Flask(__name__)
 model = pickle.load(open(filename,'rb'))
 
@@ -28,11 +28,11 @@ def predict_single():
 @app.route('/predict_many', methods=['POST'])
 def predict_many():
     try:
-        content = request.json
-        df = pd.json_normalize(content)
-        df = pd.DataFrame(df)
+        content = json.loads(request.get_json())
+        df = pd.read_json(content)
         prediction = model.predict(df)
-    except:
+    except Exception as e:
+         print(e)
          return jsonify({'error':"JSON wrong format" })
     return jsonify({'prediction': list(prediction)})
 
