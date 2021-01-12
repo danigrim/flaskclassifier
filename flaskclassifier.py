@@ -29,12 +29,12 @@ def predict_single():
 def predict_many():
     try:
         content = json.loads(request.get_json())
-        df = pd.read_json(content)
+        df = pd.DataFrame(content)
         prediction = model.predict(df)
     except Exception as e:
-         print(e)
          return jsonify({'error':"JSON wrong format" })
-    return jsonify({'prediction': list(prediction)})
+    lists = prediction.tolist()
+    return json.dumps(lists)
 
 
 if __name__ == "main":
